@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,46 +14,45 @@ public class Sphere : MonoBehaviour {
 	void Start () {
 		list=new List<Vector3>();
 		moveState = true;
+		initializePositionList ();
 
-		/*if (list.Count != 0)
-			moveState = true;
-			*/
+		TargetPosition = list [Random.Range (0, list.Count)];
 	}
 
 	void Update () {
 
-		if (moveState) {
+		if (moveState) 
 			transform.position = Vector3.MoveTowards (transform.position, TargetPosition, SPEED * Time.deltaTime);
-			if (transform.position == TargetPosition) {
-				list.Remove (TargetPosition);
-				if (list.Count == 0) {
-					Destroy (this.gameObject);
-				} else {
-					TargetPosition = list [0];
-				}					
+							
+					
 			}
-		}
-	}
 
-	public void initializePositionList(List<Vector3> list)
+	public void initializePositionList()//List<Vector3> list)
 	{   
-		/*	Debug.Log ("hello");
+		
 
 		list.Add (new Vector3(-4.0f,0.5f,6.0f));
 		list.Add (new Vector3(4.0f,0.5f,-6.0f));
 		list.Add (new Vector3(4.0f,0.5f,6.0f));
 
 		list.Add (new Vector3(-4.0f,0.5f,-6.0f));
-*/
+		/*
 		this.list=list;
 		TargetPosition = list [0];
+*/               
+
+}
+	void OnCollisionEnter(Collision other)
+	{ 	Vector3 vector = list [Random.Range (0, list.Count )];
+			while(vector==TargetPosition)
+			{
+				vector = list [Random.Range (0, list.Count)];
+			}
+
+			TargetPosition = vector;
+
 	}
 
-	public void initializePositionList(Vector3 pos)
-	{
-		list [0] = pos;
-		TargetPosition = list[0];
-	}
 
 	public void stopMovement()
 	{

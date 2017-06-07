@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,13 +7,12 @@ public class Spawn : MonoBehaviour {
 	public GameObject Enemy,Enemy1,Enemy2,Enemy3,Enemy4;
 
 	void Start () {
-		
+          
 		InvokeRepeating ("InstantiateEnemy", 1f, 5f);
 		
 	}
 		void InstantiateEnemy()
-	{  Debug.Log (timeCounter);
-		enemyAtOnce = 0;
+	{	enemyAtOnce = 0;
 
 		if (timeCounter >= 10) {
 			maxCount =maxCount*2;
@@ -56,5 +55,5 @@ public class Spawn : MonoBehaviour {
 		
 	}
 
-
+      
 }

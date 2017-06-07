@@ -21,10 +21,9 @@ public class moveObj : MonoBehaviour {
 		transform.Translate (speed * Time.deltaTime, 0, 0);
 		*/
 }
-	/*void OnCollisionEnter(Collision other)
+	void OnCollisionEnter(Collision other)
 	{
-		if (other.gameObject.tag == "Sphere")
-			Destroy (other.gameObject);
+		Debug.Log (other.gameObject.name);
 	}
-	*/
+
 }
